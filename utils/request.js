@@ -10,7 +10,8 @@ export const $request = (requestName,params,headerType=0)=>{
 			'Content-Type': 'application/x-www-form-urlencoded' 
 		}
 	]
-	let url = 'http://192.168.1.130:8081';
+	// let url = 'http://39.108.110.227:8088';
+	let url ='http://mail.zyjsl.com'
 	let reqUrl = reqObj.otherGet?`${url}${reqObj.url}/${params}`:`${url}${reqObj.url}`
 	let data = reqObj.otherGet?{}:params;
 	return new Promise((resolve,reject)=>{

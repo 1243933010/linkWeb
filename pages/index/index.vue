@@ -3,6 +3,8 @@
 		<!-- <image class="logo" src="/static/logo.png"></image> -->
 		<view class="text-area">
 			<text class="title">正在跳转小程序...</text>
+			<!-- <button type="primary">点击跳转小程序</button> -->
+			<!-- <a :href="clickTab">ssss</a> -->
 		</view>
 	</view>
 </template>
@@ -16,6 +18,7 @@
 	} from 'vue';
 	import {$request} from '@/utils/request.js'
 	
+	let clickTab = ref('')
 	let handleUrl = ()=>{
 		var paraString = location.href;
 		console.log(paraString,'---')
@@ -27,17 +30,19 @@
 		
 	}
 	onLoad(async(options) => {
-		 let url =   handleUrl()
+		//?weight=12&merchantNo=12345&smallTicket=321
+		 let urlData =   handleUrl()
 		let obj = {
 			env_version:'trial',
-			path:'/pages/index/index',
-			query:url
+			path:'/pages/expressDelivery/expressDelivery',
+			query:urlData
 		}
 		let res = await $request('generateuUrlink',obj)
-		if(res.data.code===0){
-			location.href = `${res.data.data}${url}`
-		}
 		console.log(res)
+		if(res.data.code===0){
+			// location.href = `${res.data.data}${urlData}`
+		}
+		
 	})
 </script>
 
